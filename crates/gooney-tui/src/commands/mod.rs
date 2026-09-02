@@ -9,3 +9,4 @@ pub mod connect;
 pub mod reset;
 pub mod analyze;
 pub mod cosim;
+pub mod x86_decode_test;

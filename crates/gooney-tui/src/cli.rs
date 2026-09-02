@@ -59,6 +59,11 @@ pub enum Commands {
         path: String,
     },
 
+    X86DecodeTest {
+        #[arg(short, long, help = "Optional path to custom test vector file")]
+        vector_file: Option<String>,
+    },
+
     Cosim {
         /// Path to the firmware or test binary to execute
         #[arg(short, long, default_value = "tests/firmware.bin")]

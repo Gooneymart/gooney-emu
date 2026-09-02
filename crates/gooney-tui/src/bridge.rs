@@ -1,6 +1,6 @@
 // crates/gooney-tui/src/bridge.rs
 use std::os::raw::{c_char, c_int};
-
+#[allow(dead_code)]
 mod ffi {
     use super::*;
     extern "C" {
@@ -24,7 +24,7 @@ mod ffi {
         pub fn xzxt_get_sim_done() -> c_int;
     }
 }
-
+#[allow(dead_code)]
 pub trait SimCore {
     unsafe fn init(&self, firmware_path: &str);
     unsafe fn destroy(&self);

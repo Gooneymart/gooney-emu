@@ -1,7 +1,7 @@
 // crates/gooney-tui/src/commands/cosim.rs
 use crate::bridge::{ActiveSimCore, SimCore};
 use std::path::Path;
-
+#[allow(unused_mut)]
 pub fn execute(firmware_path: &str, steps: usize) -> Result<(), Box<dyn std::error::Error>> {
     println!("==================================================================");
     println!("🚀 GOONEY-EMU / VERILATOR NATIVE CO-SIMULATION (EXIT & CUSTOM MONITOR)");
@@ -20,6 +20,7 @@ pub fn execute(firmware_path: &str, steps: usize) -> Result<(), Box<dyn std::err
 
     let mut commit_count: usize = 0;
     let mut custom_hits: usize = 0;
+    let mut divergence_count: usize = 0; // 👈 Track divergences here
     let mut exit_detected = false;
     let mut final_status: u64 = 0;
 
@@ -44,6 +45,19 @@ pub fn execute(firmware_path: &str, steps: usize) -> Result<(), Box<dyn std::err
             let mem_wdata = core.get_mem_wdata();
             let wb_rd = core.get_wb_rd();
             let wb_result = core.get_wb_result();
+
+            // ==========================================================
+            // 🔍 DIVERGENCE CHECK HOOK
+            // ==========================================================
+            // TODO: If you have a software reference model or expected state, 
+            // compare it against `pc`, `wb_result`, etc., here. 
+            // Example structure:
+            // let expected_pc = get_reference_pc(step_num);
+            // if committed && pc != expected_pc {
+            //     divergence_count += 1;
+            //     println!("❌ DIVERGENCE DETECTED at step {}: HW PC (0x{:08X}) != REF PC (0x{:08X})", step_num, pc, expected_pc);
+            // }
+            // ==========================================================
 
             // Check if register a0 (x10) is being updated
             if committed && wb_rd == 10 {
@@ -70,10 +84,8 @@ pub fn execute(firmware_path: &str, steps: usize) -> Result<(), Box<dyn std::err
                 }
             }
 
-            // Check for exit trigger write (tohost/exit memory address interaction)
+            // Check for exit trigger write
             if mem_wen {
-                // Typical exit trigger check (e.g., non-zero write or specific magic address)
-                // We'll flag any significant memory-mapped completion write
                 exit_detected = true;
             }
         }
@@ -85,10 +97,11 @@ pub fn execute(firmware_path: &str, steps: usize) -> Result<(), Box<dyn std::err
 
     println!("\n==================================================================");
     println!("📊 CO-SIMULATION SUMMARY REPORT");
-    println!("   • Total Instructions Committed: {}", commit_count);
-    println!("   • Custom-0 Extensions Triggered: {} ⚡", custom_hits);
-    println!("   • Final Status in a0 (x10): 0x{:X}", final_status);
-    println!("   • Exit Triggered via Memory: {}", if exit_detected { "YES ✅" } else { "NO ❌" });
+    println!("    • Total Instructions Committed: {}", commit_count);
+    println!("    • Custom-0 Extensions Triggered: {} ⚡", custom_hits);
+    println!("    • Divergences Detected: {}", divergence_count); // 👈 Displayed in summary
+    println!("    • Final Status in a0 (x10): 0x{:X}", final_status);
+    println!("    • Exit Triggered via Memory: {}", if exit_detected { "YES ✅" } else { "NO ❌" });
     println!("==================================================================");
 
     Ok(())
