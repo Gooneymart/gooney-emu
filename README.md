@@ -2,7 +2,7 @@
 
 # Gooney RISC-V Emulator (`gooney-emu`)
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](LICENSE)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 [![Rust](https://img.shields.io/badge/built_with-Rust-orange.svg?logo=rust)](https://www.rust-lang.org/)
 [![Architecture](https://img.shields.io/badge/ISA-RV64I-green.svg)](https://riscv.org/)
 
@@ -401,10 +401,9 @@ Current documentation includes:
 
 ## 📜 License
 
-Gooney is open-source software licensed under the **GNU General Public License v2.0 (GPLv2)**.
+Gooney is open-source software licensed under the **Mozilla Public License 2.0 (MPL-2.0)**.
 
 See [`LICENSE`](LICENSE) for the complete license text.
-
 ---
 
 ## 🤝 Contributing

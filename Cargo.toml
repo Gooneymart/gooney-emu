@@ -1,8 +1,8 @@
 [workspace]
 members = [
+    # EDITABLE: Switch or add custom instruction set extensions here 
+    # (e.g., custom-0, custom-1, custom-2, etc.) depending on what you want to emulate.
     "extensions/custom-0/gooney-example",
-    "crates/gooney-core",
-    "crates/gooney-tui"
+    "crates/*",
 ]
 resolver = "2"
-
