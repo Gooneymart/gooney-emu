@@ -1,4 +1,4 @@
-This document outlines the validation logic performed by `gooney-tui analyze` and provides a checklist to ensure your Veryl HDL core (`gooneymart_xzxt_hdl`) is ready for co-simulation as an oracle-verified RISC-V RV64I core.
+This document outlines the validation logic performed by `gooney-tui analyze` and provides a checklist to ensure your Veryl HDL core  is ready for co-simulation as an oracle-verified RISC-V RV64I core.
 
 ## 1. Automated Checks (via `analyze` command)
 When you run `cargo run --bin gooney-tui -- analyze`, the tool automatically verifies:
