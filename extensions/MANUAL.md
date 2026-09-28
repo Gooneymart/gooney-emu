@@ -1,5 +1,3 @@
-Yes — I’d make `MANUAL.md` a **user/operator manual**, separate from `EXTENSION.md`. `EXTENSION.md` explains how to develop an extension; `MANUAL.md` should explain how to **lint, connect, run, inspect, and reset** extensions through `gooney-tui`.
-
 # Gooney Emu Extension Manual
 
 This manual explains how to build, connect, test, and reset custom RISC-V extensions using the **Gooney Emu** command-line interface.
