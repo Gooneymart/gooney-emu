@@ -29,4 +29,9 @@ cargo_errors.log
 
 # Nix environment artifacts
 .direnv/
-.nix-profile/
+.nix-profile
+
+# FPGA stuff
+crates/gooney-fpga/verification/*
+!verification.md
+
