@@ -240,6 +240,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "gooney-fpga"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "gooney-core",
+]
+
+[[package]]
 name = "gooney-tui"
 version = "0.1.0"
 dependencies = [

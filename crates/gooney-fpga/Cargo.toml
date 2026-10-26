@@ -1,0 +1,9 @@
+[package]
+name = "gooney-fpga"
+version = "0.1.0"
+edition = "2021"
+license = "MPL-2.0"
+
+[dependencies]
+gooney-core = { path = "../gooney-core" } # Optional: only if it needs shared core types
+clap = { version = "4.0", features = ["derive"] } # For CLI assistant commands

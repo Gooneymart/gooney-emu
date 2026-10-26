@@ -356,6 +356,21 @@ It is responsible for:
 
 ---
 
+# Gooney FPGA DV Utility (`gooney-fpga`)
+
+`gooney-fpga` is a standalone command-line verification utility designed for the **Gooney Emu** RISC-V co-simulation ecosystem. It bridges the gap between software-level reference models and hardware Design Verification (DV), providing automated routines to validate Veryl/SystemVerilog RTL before Vivado synthesis.
+
+---
+
+## Key Features
+
+* **Automated Regression Suite:** Scans test directories for compliance and hazard binaries, executing back-to-back co-simulations with clear pass/fail reporting.
+* **Cycle-by-Cycle Trace Generation:** Dumps structured execution logs (PC, opcodes, register write-backs, data values) to CSV format for debugging or waveform diffing.
+* **Reset & Initialization Stress Testing:** Exercises asynchronous and synchronous reset assertions to verify boot vector positioning (`0x80000000`), pipeline register clearing, and zero-state integrity.
+* **CI/CD Ready:** Operates as an independent workspace binary, allowing automated regression checks without requiring an interactive TUI.
+
+---
+
 ## 🔬 Development Philosophy
 
 Gooney is intentionally designed to favor **clarity and inspectability** over hiding CPU behavior behind complex abstractions.
