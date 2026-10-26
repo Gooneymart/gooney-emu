@@ -34,4 +34,6 @@ cargo_errors.log
 # FPGA stuff
 crates/gooney-fpga/verification/*
 !verification.md
+!Makefile
+
 
