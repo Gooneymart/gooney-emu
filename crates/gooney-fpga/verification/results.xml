@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1792997743" />
+    <testcase name="rv64i_crv_regression_test" classname="test_crv" file="/home/soulking/gooney-emu/crates/gooney-fpga/verification/test_crv.py" lineno="38" time="0.016088008880615234" sim_time_ns="5050.0" ratio_time="313898.3846587036" />
+  </testsuite>
+</testsuites>

@@ -3,6 +3,7 @@ mod regression;
 mod trace;
 mod reset_test;
 mod checklist;
+mod crv;
 
 #[derive(Parser)]
 #[command(name = "gooney-fpga")]
@@ -33,6 +34,7 @@ enum Commands {
         cycles: usize,
     },
     Checklist,
+    Crv,
 
 }
 
@@ -64,5 +66,12 @@ fn main() {
             std::process::exit(1);
         }
     }
+
+    Commands::Crv => {
+    if let Err(e) = crv::run_cocotb_crv() {
+        eprintln!("[Error] CRV execution failed: {}", e);
+        std::process::exit(1);
+        }
+      }
     }
 }
